@@ -1,0 +1,46 @@
+** start of script.js **
+
+function telephoneCheck(str) {
+const num = str.match(/\d/g);
+  if (!num) return false;
+
+  // Check valid number length
+  if (num.length === 11) {
+    if (str[0] !== '1') return false; // first digit must be 1
+    str = str.substring(1);
+    while (str[0] === ' ') str = str.substring(1); // remove all leading spaces
+  } else if (num.length === 10) {
+    // valid, do nothing
+  } else {
+    return false; // invalid length
+  }
+
+  // Handle area code in parentheses
+  if (str[0] === '(') {
+    if (!/\(\d{3}\)/.test(str.substring(0, 5))) return false;
+    str = str.substring(5);
+    while (str[0] === ' ') str = str.substring(1); // remove spaces after parentheses
+  } else {
+    if (!/\d{3}/.test(str.substring(0, 3))) return false;
+    str = str.substring(3);
+    if (str[0] === '-' || str[0] === ' ') str = str.substring(1);
+  }
+
+  // Next 3 digits
+  if (!/\d{3}/.test(str.substring(0, 3))) return false;
+  str = str.substring(3);
+  if (str[0] === '-' || str[0] === ' ') str = str.substring(1);
+
+  // Last 4 digits
+  if (!/\d{4}/.test(str.substring(0, 4))) return false;
+  str = str.substring(4);
+
+  // No extra characters allowed
+  if (str.length > 0) return false;
+
+  return true;
+}
+console.log(telephoneCheck("555-555-5555"));
+
+** end of script.js **
+
