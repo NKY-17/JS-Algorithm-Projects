@@ -1,0 +1,30 @@
+** start of script.js **
+
+function palindrome(str) {
+  let letters=[];
+  let regex=RegExp('[a-zA-Z0-9]','g');
+
+  //remove white spaces,punctuations,capitalizations and special characters
+ 
+ str = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+  str=str.toLowerCase();
+  //creating array of letters
+  for(let i=0;i<str.length;i++){
+    letters.push(str[i]);
+  }
+  //reverse letter and join them to string
+  letters.reverse();
+  let newstr=letters.join('');
+  //check newstr is same as str
+  if(str===newstr){
+return true;
+  }else{
+    return false;
+  }
+  
+}
+
+palindrome("eye");
+
+** end of script.js **
+
