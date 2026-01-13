@@ -1,0 +1,59 @@
+** start of script.js **
+
+function checkCashRegister(price, cash, cid) {
+  const currencyUnits = [
+    ["ONE HUNDRED", 100],
+    ["TWENTY", 20],
+    ["TEN", 10],
+    ["FIVE", 5],
+    ["ONE", 1],
+    ["QUARTER", 0.25],
+    ["DIME", 0.10],
+    ["NICKEL", 0.05],
+    ["PENNY", 0.01]
+  ];
+
+  let changeDue = cash - price;
+
+  // Calculate total cash in drawer
+  const totalCID = cid.reduce((sum, curr) => sum + curr[1], 0);
+  if (totalCID < changeDue) {
+    return { status: "INSUFFICIENT_FUNDS", change: [] };
+  } else if (totalCID.toFixed(2) == changeDue.toFixed(2)) {
+    return { status: "CLOSED", change: cid };
+  }
+
+  let changeArray = [];
+
+  // Start giving change from largest to smallest
+  for (let [name, value] of currencyUnits) {
+    // Find the amount available in drawer
+    let drawerAmount = cid.find(item => item[0] === name)[1];
+    let amountToReturn = 0;
+
+    while (changeDue >= value && drawerAmount >= value) {
+      changeDue -= value;
+      drawerAmount -= value;
+      amountToReturn += value;
+
+      // Fix floating point precision
+      changeDue = Math.round(changeDue * 100) / 100;
+    }
+
+    if (amountToReturn > 0) {
+      changeArray.push([name, amountToReturn]);
+    }
+  }
+
+  if (changeDue > 0) {
+    return { status: "INSUFFICIENT_FUNDS", change: [] };
+  }
+
+  return { status: "OPEN", change: changeArray };
+}
+
+
+checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]);
+
+** end of script.js **
+
