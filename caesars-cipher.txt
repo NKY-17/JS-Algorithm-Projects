@@ -1,0 +1,26 @@
+** start of script.js **
+
+//const Acode='A'.charCodeAt(0);
+function rot13(str) {
+  let output='';
+  const Acode = 'A'.charCodeAt(0);
+  const Zcode = 'Z'.charCodeAt(0);
+ for(const c of str){
+   if(!/[A-Z]/.test(c)){
+     output+=c;
+ }else{
+   let code=c.charCodeAt(0);
+   code-=13;
+   if(code<Acode){
+  code=Zcode-(Acode-code-1);
+   }
+   output+=String.fromCharCode(code);
+ }
+}
+return output;
+}
+
+console.log(rot13("SERR PBQR PNZC"));
+
+** end of script.js **
+
