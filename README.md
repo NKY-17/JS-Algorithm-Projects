@@ -29,3 +29,6 @@ A simple JavaScript project that checks whether a given string is a palindrome (
 
 ---
 
+##  📌 Certificate
+Legacy JavaScript Algorithms and Data Structures – freeCodeCamp
+Link: https://freecodecamp.org/certification/nky_17/javascript-algorithms-and-data-structures
