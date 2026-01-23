@@ -1,4 +1,4 @@
-** start of script.js **
+//** start of script.js **
 
 function palindrome(str) {
   let letters=[];
@@ -26,5 +26,5 @@ return true;
 
 palindrome("eye");
 
-** end of script.js **
+//** end of script.js **
 
