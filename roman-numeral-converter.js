@@ -1,4 +1,4 @@
-** start of script.js **
+//** start of script.js **
 
 const number=[1000,900,500,400,100,90,50,40,10,9,5,4,1];
 const converter={
@@ -33,5 +33,5 @@ return output;
 
 console.log(convertToRoman(36));
 
-** end of script.js **
+//** end of script.js **
 
