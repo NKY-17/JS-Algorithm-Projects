@@ -1,4 +1,4 @@
-** start of script.js **
+//** start of script.js **
 
 function telephoneCheck(str) {
 const num = str.match(/\d/g);
@@ -10,7 +10,7 @@ const num = str.match(/\d/g);
     str = str.substring(1);
     while (str[0] === ' ') str = str.substring(1); // remove all leading spaces
   } else if (num.length === 10) {
-    // valid, do nothing
+
   } else {
     return false; // invalid length
   }
@@ -26,7 +26,7 @@ const num = str.match(/\d/g);
     if (str[0] === '-' || str[0] === ' ') str = str.substring(1);
   }
 
-  // Next 3 digits
+  // For next 3 digits
   if (!/\d{3}/.test(str.substring(0, 3))) return false;
   str = str.substring(3);
   if (str[0] === '-' || str[0] === ' ') str = str.substring(1);
@@ -35,12 +35,12 @@ const num = str.match(/\d/g);
   if (!/\d{4}/.test(str.substring(0, 4))) return false;
   str = str.substring(4);
 
-  // No extra characters allowed
+  // No extra characters are allowed
   if (str.length > 0) return false;
 
   return true;
 }
 console.log(telephoneCheck("555-555-5555"));
 
-** end of script.js **
+//** end of script.js **
 
