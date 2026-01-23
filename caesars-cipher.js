@@ -1,4 +1,4 @@
-** start of script.js **
+//** start of script.js **
 
 //const Acode='A'.charCodeAt(0);
 function rot13(str) {
@@ -22,5 +22,5 @@ return output;
 
 console.log(rot13("SERR PBQR PNZC"));
 
-** end of script.js **
+//** end of script.js **
 
